@@ -19,8 +19,8 @@ function AppNavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link passHref href="/">
-              <Nav.Link>Posts</Nav.Link>
+            <Link passHref href="/posts">
+              <Nav.Link>All Posts</Nav.Link>
             </Link>
             <Link passHref href="/tag/tags">
               <Nav.Link>Tags</Nav.Link>
