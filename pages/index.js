@@ -1,7 +1,5 @@
-import PostCard from '../components/PostCard';
-
 function Home() {
-  return <PostCard />;
+  return <h1>Home</h1>;
 }
 
 export default Home;
