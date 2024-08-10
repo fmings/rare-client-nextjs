@@ -1,7 +1,9 @@
-// const apiUrl = '/posts';
+import clientCredentials from '../utils/client';
+
+const endpoint = clientCredentials.databaseURL;
 
 const getAllPosts = () => new Promise((resolve, reject) => {
-  fetch('/posts', {
+  fetch(`${endpoint}/posts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
