@@ -6,7 +6,7 @@ export default function PostCard() {
 
   useEffect(() => {
     getAllPosts().then(setPosts);
-  });
+  }, []);
 
   return (
     <div>
