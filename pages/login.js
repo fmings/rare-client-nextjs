@@ -1,36 +1,36 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
-import { loginUser } from '../utils/data/AuthManager';
+// import Link from 'next/link';
+// import { useRouter } from 'next/router';
+// import PropTypes from 'prop-types';
+// import { useRef, useState } from 'react';
+// import { loginUser } from '../utils/data/AuthManager';
 
-function Login({ setToken }) {
-  const username = useRef();
-  const password = useRef();
-  const navigate = useRouter();
-  const [isUnsuccessful, setisUnsuccessful] = useState(false);
+function Login() {
+  // const username = useRef();
+  // const password = useRef();
+  // const navigate = useRouter();
+  // const [isUnsuccessful, setisUnsuccessful] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
 
-    const user = {
-      username: username.current.value,
-      password: password.current.value,
-    };
+  //   const user = {
+  //     username: username.current.value,
+  //     password: password.current.value,
+  //   };
 
-    loginUser(user).then((res) => {
-      if ('valid' in res && res.valid) {
-        setToken(res.token);
-        navigate.push('/');
-      } else {
-        setisUnsuccessful(true);
-      }
-    });
-  };
+  //   loginUser(user).then((res) => {
+  //     if ('valid' in res && res.valid) {
+  //       setToken(res.token);
+  //       navigate.push('/');
+  //     } else {
+  //       setisUnsuccessful(true);
+  //     }
+  //   });
+  // };
 
   return (
     <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleLogin}>
+      {/* <form className="column is-two-thirds" onSubmit={handleLogin}>
         <h1 className="title">Rare Publishing</h1>
         <p className="subtitle">Please sign in</p>
 
@@ -60,12 +60,13 @@ function Login({ setToken }) {
           </div>
         </div>
         {isUnsuccessful ? <p className="help is-danger">Username or password not valid</p> : ''}
-      </form>
+      </form> */}
+      <h1>Test</h1>
     </section>
   );
 }
 
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
+// Login.propTypes = {
+//   setToken: PropTypes.func.isRequired,
+// };
 export default Login;

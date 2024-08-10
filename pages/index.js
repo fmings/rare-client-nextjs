@@ -1,5 +1,7 @@
+import PostCard from '../components/PostCard';
+
 function Home() {
-  return 'Loading...';
+  return <PostCard />;
 }
 
 export default Home;
