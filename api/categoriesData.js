@@ -27,8 +27,8 @@ const createCategory = (payload) => new Promise((res, rej) => {
     .catch(rej);
 });
 
-const FilterPostByCategory = () => new Promise((res, rej) => {
-  fetch(`${endpoint}/categories/{id}/posts`, {
+const filterPostByCategory = (id) => new Promise((res, rej) => {
+  fetch(`${endpoint}/categories/${id}/posts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -39,4 +39,4 @@ const FilterPostByCategory = () => new Promise((res, rej) => {
     .catch(rej);
 });
 
-export { getAllCategories, createCategory, FilterPostByCategory };
+export { getAllCategories, createCategory, filterPostByCategory };

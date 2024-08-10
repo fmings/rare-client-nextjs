@@ -1,13 +1,13 @@
 import { Dropdown } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { getAllCategories } from '../api/categoriesData';
 
-export default function FilterPostsByCategory() {
+export default function FilterPostsByCategory({ filterCategoryFunc, filterAll }) {
   const [categories, setCategories] = useState([]);
 
-  const getAllTheCategories = () => {
-    getAllCategories().then(setCategories);
+  const getAllTheCategories = async () => {
+    await getAllCategories().then(setCategories);
   };
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function FilterPostsByCategory() {
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">Search by Category</Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item>
+          <Dropdown.Item onClick={() => filterAll()}>
             All
           </Dropdown.Item>
           <Dropdown.Item>
@@ -28,7 +28,7 @@ export default function FilterPostsByCategory() {
               <Dropdown.Item
                 key={category.id}
                 value={category.id}
-                // onClick={() => filterCategoryFunc(category.id)}
+                onClick={() => filterCategoryFunc(category.id)}
               >{category.label}
               </Dropdown.Item>
             ))
@@ -40,6 +40,7 @@ export default function FilterPostsByCategory() {
   );
 }
 
-// FilterPostsByCategory.propTypes = {
-//   filterCategoryFunc: PropTypes.func.isRequired,
-// };
+FilterPostsByCategory.propTypes = {
+  filterCategoryFunc: PropTypes.func.isRequired,
+  filterAll: PropTypes.func.isRequired,
+};
