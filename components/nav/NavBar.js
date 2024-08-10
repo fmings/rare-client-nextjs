@@ -22,6 +22,9 @@ function AppNavBar() {
             <Link passHref href="/">
               <Nav.Link>Posts</Nav.Link>
             </Link>
+            <Link passHref href="/tag/tags">
+              <Nav.Link>Tags</Nav.Link>
+            </Link>
             {/* {token ? (
               <button
                 type="button"
