@@ -2,7 +2,7 @@ import clientCredentials from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getAllPosts = () => new Promise((resolve, reject) => {
+const getPosts = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/posts`, {
     method: 'GET',
     headers: {
@@ -14,4 +14,4 @@ const getAllPosts = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getAllPosts;
+export default getPosts;
