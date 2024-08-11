@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PostCard from '../components/posts/PostCard';
-import getPosts from '../api/postsData';
+import { getPosts } from '../api/postsData';
 
 export default function ViewAllPosts() {
   const [posts, setPosts] = useState([]);
