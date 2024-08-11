@@ -1,9 +1,15 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { deletePost } from '../../api/postsData';
 
-export default function PostCard({ postObj }) {
-  // INSERT FUNCTION TO GET USERS/AUTHORS and CATEGORIES ONCE PROMISES ARE BUILT
+export default function PostCard({ postObj, onUpdate }) {
+  const deleteThisPost = () => {
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      deletePost(postObj.id).then(() => onUpdate());
+    }
+  };
+
   return (
     <div>
       <Card style={{ width: '18rem' }}>
@@ -16,7 +22,7 @@ export default function PostCard({ postObj }) {
             {postObj.content}
           </Card.Text>
           <Card.Subtitle className="mb-2 text-muted">Author: {postObj.userId}</Card.Subtitle>
-          <Card.Link href="#">View Post</Card.Link>
+          <Button className="button" variant="danger" onClick={deleteThisPost}>Delete</Button>
         </Card.Body>
       </Card>
     </div>
@@ -34,4 +40,5 @@ PostCard.propTypes = {
     content: PropTypes.string,
     approved: PropTypes.bool,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
