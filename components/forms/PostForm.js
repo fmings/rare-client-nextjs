@@ -39,10 +39,13 @@ function PostForm({ obj }) {
 
   const handleSubmit = (p) => {
     p.preventDefault();
+    // ADDED PAYLOAD VARIABLE, ADDED USERID AND PUBLICATION DATE KEYS - NEED TO FETCH USER ID AND REPLACE THE TEST CONSTANT BELOW; NEED TO ALSO ENSURE PUBLICATIONDATE IS PULLING IN CORRECT DATE/TIME DATA, CURRENT VALUE IS A DUMMY FOR TESTING
+    const payload = { ...formInput, userId: 1, publicationDate: Date.now };
+    console.warn(payload);
     if (obj.id) {
-      updatePost(formInput).then(() => router.push('/'));
+      updatePost(payload).then(() => router.push('/'));
     } else {
-      createPost(formInput).then(() => router.push('/'));
+      createPost(payload).then(() => router.push('/'));
     }
   };
 
@@ -65,8 +68,9 @@ function PostForm({ obj }) {
         <Form.Control
           type="url"
           placeholder="Enter an image url"
-          name="image"
-          value={formInput.image}
+          name="imageUrl"
+          // CHANGED DOT NOTATION TO IMAGE URL VERSUS IMAGE
+          value={formInput.imageUrl}
           onChange={handleChange}
           required
         />
@@ -89,7 +93,8 @@ function PostForm({ obj }) {
           name="categoryId"
           onChange={handleChange}
           className="mb-3"
-          value={obj.categoryId.id}
+          // CHANGED KEY TO FORMINPUT VERSUS OBJ
+          value={formInput.categoryId}
           required
         >
           <option value="">Select an Category</option>
