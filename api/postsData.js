@@ -14,6 +14,18 @@ const getPosts = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSinglePost = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
 const deletePost = (id) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/posts/${id}`, {
     method: 'DELETE',
@@ -28,5 +40,6 @@ const deletePost = (id) => new Promise((resolve, reject) => {
 
 export {
   getPosts,
+  getSinglePost,
   deletePost,
 };
