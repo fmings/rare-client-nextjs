@@ -43,9 +43,9 @@ function PostForm({ obj }) {
     const payload = { ...formInput, userId: 1, publicationDate: Date.now };
     console.warn(payload);
     if (obj.id) {
-      updatePost(payload).then(() => router.push('/'));
+      updatePost(payload).then(() => router.push('/posts'));
     } else {
-      createPost(payload).then(() => router.push('/'));
+      createPost(payload).then(() => router.push('/posts'));
     }
   };
 
