@@ -17,13 +17,14 @@ export default function FilterPostsByCategory({ filterCategoryFunc, filterAll })
   return (
     <div>
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">Search by Category</Dropdown.Toggle>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Search by Category
+        </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => filterAll()}>
             All
           </Dropdown.Item>
-          <Dropdown.Item>
-            {
+          {
             categories.map((category) => (
               <Dropdown.Item
                 key={category.id}
@@ -33,7 +34,6 @@ export default function FilterPostsByCategory({ filterCategoryFunc, filterAll })
               </Dropdown.Item>
             ))
           }
-          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </div>
