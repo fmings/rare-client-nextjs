@@ -38,8 +38,37 @@ const deletePost = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export {
+const createPost = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const updatePost = (payload, id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+export
+{
   getPosts,
-  getSinglePost,
+  createPost,
+  updatePost,
   deletePost,
+  getSinglePost,
 };

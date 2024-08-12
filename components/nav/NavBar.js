@@ -25,6 +25,9 @@ function AppNavBar() {
             <Link passHref href="/tag/tags">
               <Nav.Link>Tags</Nav.Link>
             </Link>
+            <Link passHref href="/user/user">
+              <Nav.Link>User Management</Nav.Link>
+            </Link>
             <Link passHref href="/categories">
               <Nav.Link>Categories</Nav.Link>
             </Link>

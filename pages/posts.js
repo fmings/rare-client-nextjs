@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import PostCard from '../components/posts/PostCard';
 import { getPosts } from '../api/postsData';
 import FilterPostsByCategory from '../components/FilterPostsByCategory';
@@ -23,6 +25,11 @@ export default function ViewAllPosts() {
 
   return (
     <div>
+      <div className="text-center my-4">
+        <Link href="/post/new" passHref>
+          <Button>Add Post</Button>
+        </Link>
+      </div>
       <div>
         <FilterPostsByCategory filterCategoryFunc={filter} filterAll={getAllPosts} />
       </div>
