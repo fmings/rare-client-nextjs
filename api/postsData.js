@@ -14,4 +14,61 @@ const getPosts = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getPosts;
+const getSinglePost = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
+const deletePost = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.text())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const createPost = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const updatePost = (payload, id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+export
+{
+  getPosts,
+  createPost,
+  updatePost,
+  deletePost,
+  getSinglePost,
+};
