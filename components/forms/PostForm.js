@@ -26,6 +26,7 @@ function PostForm({ obj }) {
   const [categories, setCategories] = useState([]);
   const [users, setUsers] = useState([]);
   const router = useRouter();
+  // const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(async () => {
   // getAllTags().then(setTags);
@@ -40,6 +41,27 @@ function PostForm({ obj }) {
       [name]: value,
     }));
   };
+
+  // const handleTagChange = (selections) => {
+  //   setSelectedTags(selections);
+  // };
+
+  // const managePostTags = async (postId) => {
+  //   selectedTags.forEach((tag) => {
+  //     if (typeof tag.value === 'string') {
+  //       createTag({ label: tag.label }).then(({ id }) => addPostTag({ postId, tagId: id }));
+  //     } else if (postObj?.tags?.some((postTag) => postTag.id === tag.value)) {
+  //       console.warn(`Existing ${tag.value}`);
+  //     } else {
+  //       addPostTag({ postId, tagId: tag.value });
+  //     }
+  //   });
+  //   obj?.tags?.forEach((tag) => {
+  //     if (!selectedTags.some((sTag) => sTag.value === tag.id)) {
+  //       removePostTag(postId, tag.id);
+  //     }
+  //   });
+  // };
 
   const handleSubmit = (p) => {
     p.preventDefault();
