@@ -13,7 +13,7 @@ export default function PostCard({ postObj, onUpdate }) {
 
   return (
     <div>
-      {console.warn(postObj)}
+      {/* {console.warn(postObj)} */}
       <Card style={{ width: '18rem' }}>
         <Card.Body>
           <Link passHref href={`/post/${postObj.id}`}>

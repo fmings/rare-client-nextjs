@@ -28,6 +28,9 @@ function AppNavBar() {
             <Link passHref href="/user/user">
               <Nav.Link>User Management</Nav.Link>
             </Link>
+            <Link passHref href="/categories">
+              <Nav.Link>Categories</Nav.Link>
+            </Link>
             {/* {token ? (
               <button
                 type="button"
