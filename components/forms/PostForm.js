@@ -26,6 +26,7 @@ function PostForm({ obj }) {
   const [categories, setCategories] = useState([]);
   const [users, setUsers] = useState([]);
   const router = useRouter();
+  // const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(async () => {
   // getAllTags().then(setTags);
@@ -40,6 +41,27 @@ function PostForm({ obj }) {
       [name]: value,
     }));
   };
+
+  // const handleTagChange = (selections) => {
+  //   setSelectedTags(selections);
+  // };
+
+  // const managePostTags = async (postId) => {
+  //   selectedTags.forEach((tag) => {
+  //     if (typeof tag.value === 'string') {
+  //       createTag({ label: tag.label }).then(({ id }) => addPostTag({ postId, tagId: id }));
+  //     } else if (postObj?.tags?.some((postTag) => postTag.id === tag.value)) {
+  //       console.warn(`Existing ${tag.value}`);
+  //     } else {
+  //       addPostTag({ postId, tagId: tag.value });
+  //     }
+  //   });
+  //   obj?.tags?.forEach((tag) => {
+  //     if (!selectedTags.some((sTag) => sTag.value === tag.id)) {
+  //       removePostTag(postId, tag.id);
+  //     }
+  //   });
+  // };
 
   const handleSubmit = (p) => {
     p.preventDefault();
@@ -117,7 +139,7 @@ function PostForm({ obj }) {
 
       <FloatingLabel controlId="floatingSelect" label="Category">
         <Form.Select
-          aria-label="Category"
+          aria-label="Tag"
           name="categoryId"
           onChange={handleChange}
           className="mb-3"
@@ -138,6 +160,21 @@ function PostForm({ obj }) {
         }
         </Form.Select>
       </FloatingLabel>
+
+      <Form.Check
+        className="text-white mb-3"
+        type="check"
+        id="tag"
+        name="tag"
+        label=""
+        checked={formInput.tag}
+        onChange={(e) => {
+          setFormInput((prevState) => ({
+            ...prevState,
+            tag: e.target.checked,
+          }));
+        }}
+      />
 
       <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
     </Form>
