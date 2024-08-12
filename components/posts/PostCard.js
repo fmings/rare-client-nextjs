@@ -25,7 +25,7 @@ export default function PostCard({ postObj, onUpdate }) {
           <Card.Text>
             {postObj.content}
           </Card.Text>
-          <Card.Subtitle className="mb-2 text-muted">Author: {postObj.userId}</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">Author: {postObj.user.firstName} {postObj.user.lastName}</Card.Subtitle>
           <Button className="button" variant="danger" onClick={deleteThisPost}>Delete</Button>
         </Card.Body>
       </Card>
