@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
+import { getSingleUser } from '../api/userData';
 
 function UserCard({ userObj }) {
   // Load the initial state from localStorage or use the default from userObj
@@ -27,6 +28,7 @@ function UserCard({ userObj }) {
         <Button variant={active ? 'success' : 'secondary'} onClick={toggleActiveStatus}>
           {active ? 'Deactivate' : 'Activate'}
         </Button>
+        <Button className="button" variant="danger" onClick={getSingleUser}>Delete</Button>
       </Card.Body>
     </Card>
   );

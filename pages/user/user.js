@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import UserCard from '../../components/UserCard';
-import getAllUsers from '../../api/userData';
+import getAllUser from '../../api/userData';
 
 export default function ViewAllUsers() {
   const [users, setUsers] = useState([]);
 
   const getUsers = () => {
-    getAllUsers().then(setUsers);
+    getAllUser().then(setUsers);
   };
 
   useEffect(() => {

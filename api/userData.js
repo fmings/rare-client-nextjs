@@ -14,4 +14,19 @@ const getAllUsers = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getAllUsers;
+const getSingleUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/users/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
+export {
+  getAllUsers,
+  getSingleUser,
+};
