@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Form from 'react-bootstrap/Form';
@@ -6,6 +7,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { getAllCategories } from '../../api/tagData';
 import { createPost, updatePost } from '../../api/postsData';
+import getUsers from '../../api/usersData';
 
 const initialState = {
   id: 0,
@@ -22,12 +24,14 @@ function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   // const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [users, setUsers] = useState([]);
   const router = useRouter();
 
-  useEffect(() => {
+  useEffect(async () => {
   // getAllTags().then(setTags);
-    getAllCategories().then(setCategories);
-  });
+    await getAllCategories().then(setCategories);
+    await getUsers().then(setUsers);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +44,7 @@ function PostForm({ obj }) {
   const handleSubmit = (p) => {
     p.preventDefault();
     // ADDED PAYLOAD VARIABLE, ADDED USERID AND PUBLICATION DATE KEYS - NEED TO FETCH USER ID AND REPLACE THE TEST CONSTANT BELOW; NEED TO ALSO ENSURE PUBLICATIONDATE IS PULLING IN CORRECT DATE/TIME DATA, CURRENT VALUE IS A DUMMY FOR TESTING
-    const payload = { ...formInput, userId: 1, publicationDate: Date.now };
+    const payload = { ...formInput, publicationDate: new Date() };
     console.warn(payload);
     if (obj.id) {
       updatePost(payload).then(() => router.push('/posts'));
@@ -52,6 +56,30 @@ function PostForm({ obj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Post</h2>
+
+      <FloatingLabel controlId="floatingSelect" label="User">
+        <Form.Select
+          aria-label="User"
+          name="userId"
+          onChange={handleChange}
+          className="mb-3"
+          // CHANGED KEY TO FORMINPUT VERSUS OBJ
+          value={formInput.userId}
+          required
+        >
+          <option value="">Select the user creating the Post</option>
+          {
+          users.map((u) => (
+            <option
+              key={u.id}
+              value={u.id}
+            >
+              {u.firstName} {u.lastName}
+            </option>
+          ))
+        }
+        </Form.Select>
+      </FloatingLabel>
 
       <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">
         <Form.Control
