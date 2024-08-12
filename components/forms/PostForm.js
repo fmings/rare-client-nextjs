@@ -117,7 +117,7 @@ function PostForm({ obj }) {
 
       <FloatingLabel controlId="floatingSelect" label="Category">
         <Form.Select
-          aria-label="Category"
+          aria-label="Tag"
           name="categoryId"
           onChange={handleChange}
           className="mb-3"
@@ -138,6 +138,21 @@ function PostForm({ obj }) {
         }
         </Form.Select>
       </FloatingLabel>
+
+      <Form.Check
+        className="text-white mb-3"
+        type="check"
+        id="tag"
+        name="tag"
+        label=""
+        checked={formInput.tag}
+        onChange={(e) => {
+          setFormInput((prevState) => ({
+            ...prevState,
+            tag: e.target.checked,
+          }));
+        }}
+      />
 
       <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
     </Form>
