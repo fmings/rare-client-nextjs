@@ -6,7 +6,7 @@ function UserCard({ userObj }) {
   return (
     <Card style={{ width: '16rem', margin: '10px' }}>
       <Card.Body>
-        <Card.Title>{userObj.UserName}</Card.Title>
+        <Card.Title>{userObj.username}</Card.Title>
       </Card.Body>
     </Card>
   );
@@ -14,7 +14,7 @@ function UserCard({ userObj }) {
 
 UserCard.propTypes = {
   userObj: PropTypes.shape({
-    UserName: PropTypes.string,
+    username: PropTypes.string,
   }).isRequired,
 };
 

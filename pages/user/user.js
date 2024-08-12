@@ -17,7 +17,7 @@ export default function ViewAllUsers() {
     <div>
       <div className="d-flex flex-wrap">
         {users.map((user) => (
-          <UserCard userObj={user} key={user.UserName} onUpdate={getUsers} />
+          <UserCard userObj={user} key={user.id} onUpdate={getUsers} />
         ))}
       </div>
     </div>
